@@ -5,6 +5,8 @@ class Room():
         self.description = None
         self.linked_rooms = {}
         self.character = None
+        self.item = None
+        self.is_locked = False
 
     def get_description(self):
         return self.description
@@ -30,10 +32,26 @@ class Room():
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link
 
+    def set_item(self, new_item):
+        self.item = new_item 
+
+    def get_item(self):
+        return self.item       
+    
+    def lock_room(self):
+        self.is_locked = True
+
+    def unlock_room(self):
+        self.is_locked = False
+
+    def is_room_locked(self):
+        return self.is_locked        
+
     def get_details(self):
         print(f"You are in the {self.name}") 
         print("--------------------------------------------")   
         print(self.description)
+        print("--------------------------------------------")
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             print(f"The {room.get_name()} is {direction}")
@@ -41,8 +59,11 @@ class Room():
 
     def move(self, direction):
             if direction in self.linked_rooms:
-                return self.linked_rooms[direction]
-            
+                next_room = self.linked_rooms[direction]
+                if next_room.is_room_locked():
+                    print(f"The {next_room.get_name()} is locked. Would you like to 'unlock'?")
+                    return None
+                return next_room 
             else:
                 print("You can't go that way")
                 return self
