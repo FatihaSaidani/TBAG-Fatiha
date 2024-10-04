@@ -6,18 +6,23 @@ class Character():
         self.weakness = char_weakness
 
     def describe(self):
+        print("--------------------------------------------")
         print(f"{self.name} is in this room!")
         print(self.description)
+        print("--------------------------------------------")
     def set_conversation(self, conversation):
         self.conversation = conversation
 
     def talk(self):
         if self.conversation is not None:
+            print("--------------------------------------------")
             print(f"[{self.name}] says: {self.conversation}")
         else:
+            print("--------------------------------------------")
             print(f"{self.name} doesn't want to talk to you.")    
   
     def fight(self, combat_item):
+        print("--------------------------------------------")
         print(f"{self.name} doesn't want to fight you.")
         return True
     
@@ -34,9 +39,11 @@ class Enemy(Character):
 
     def fight(self, combat_item):
         if combat_item.lower() == self.weakness:
+            print("--------------------------------------------")
             print(f"you fend {self.name} off with the {combat_item}!")
             return True
         else:
+            print("--------------------------------------------")
             print(f"{self.name} crushes you, puny adventurer")
             return False
         
@@ -47,8 +54,10 @@ class Friendly(Character):
     
     def fight(self, combat_item):
         if combat_item.lower() == self.weakness:
+            print("--------------------------------------------")
             print(f"{self.name} can't fight, but enjoys the {combat_item}")
             return True 
         else:
+            print("--------------------------------------------")
             print(f"{self.name} rejects this.")
             return False
