@@ -14,3 +14,14 @@ class Item():
     
     def set_description(self, item_description):
         self.description = item_description      
+
+class Keys(Item):
+    def __init__ (self, name, description):
+        super().__init__()
+        self.name = name
+        self.description = description
+
+    def describe(self):
+        print("--------------------------------------------")
+        print(f"This Item: {self.name}")
+        print(f"Description: {self.description}")
