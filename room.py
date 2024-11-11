@@ -1,4 +1,4 @@
-
+# Parent class for rooms
 class Room():
     def __init__(self, room_name):
         self.name = room_name
@@ -47,6 +47,7 @@ class Room():
     def is_room_locked(self):
         return self.is_locked        
 
+    # allows for the user to see and understand the room they are in, and move
     def get_details(self):
         print(f"You are in the {self.name}") 
         print("--------------------------------------------")   
@@ -56,7 +57,7 @@ class Room():
             room = self.linked_rooms[direction]
             print(f"The {room.get_name()} is {direction}")
 
-
+    # allows for the user to move to different rooms unless locked 
     def move(self, direction):
             if direction in self.linked_rooms:
                 next_room = self.linked_rooms[direction]
