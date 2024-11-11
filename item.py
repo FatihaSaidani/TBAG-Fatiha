@@ -1,3 +1,4 @@
+# Parent class of items in the game
 class Item():
     def __init__(self):
         self.name = None
@@ -15,6 +16,7 @@ class Item():
     def set_description(self, item_description):
         self.description = item_description      
 
+# child class, first item
 class Keys(Item):
     def __init__ (self, name, description):
         super().__init__()
