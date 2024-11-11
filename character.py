@@ -1,3 +1,4 @@
+# Creating the parent class for all characters
 class Character():
     def __init__ (self, char_name, char_description, char_weakness):
         self.name = char_name
@@ -5,6 +6,7 @@ class Character():
         self.conversation = None
         self.weakness = char_weakness
 
+    # description of characters and allowing conversation
     def describe(self):
         print("--------------------------------------------")
         print(f"{self.name} is in this room!")
@@ -20,7 +22,8 @@ class Character():
         else:
             print("--------------------------------------------")
             print(f"{self.name} doesn't want to talk to you.")    
-  
+
+    # allowing for the user to fight the character, giving them a weakness 
     def fight(self, combat_item):
         print("--------------------------------------------")
         print(f"{self.name} doesn't want to fight you.")
@@ -33,6 +36,7 @@ class Character():
         return self.weakness
     
 
+# child class, first type of character
 class Enemy(Character):
     def __init__(self, char_name, char_description, char_weakness):
         super().__init__(char_name, char_description, char_weakness)
@@ -47,7 +51,7 @@ class Enemy(Character):
             print(f"{self.name} crushes you, puny adventurer")
             return False
         
-
+# child, class second type of character
 class Friendly(Character):
     def __init__ (self, char_name, char_description, char_weakness):
         super().__init__(char_name, char_description, char_weakness)
